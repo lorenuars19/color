@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 22:37:22 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 23:10:23 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int		main(int argc, char *argv[])
 	}
 	else if (argc > 1 && !str_cmp(argv[1], "-rfreq"))
 	{
-		printf("Double %f\n", strtod(argv[2], NULL));
 		if (puts_rainbow(strtod(argv[2], NULL)))
 		{
 			return (1);
@@ -98,8 +97,9 @@ int		main(int argc, char *argv[])
 		"[B(0-255)]   - Set background and foreground color\n"
 		"\t%s -r                                    "
 		"                               - Special rainbow mode\n"
-		"\t%s -rf [frequency factor]                "
+		"\t%s -rfreq [frequency factor]             "
 		"                               - Rainbow mode with frequency factor\n"
+		"\n\n"
 		, argv[0], argv[0], argv[0], argv[0], argv[0]);
 	}
 	return (0);

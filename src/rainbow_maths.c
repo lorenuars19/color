@@ -6,74 +6,40 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 17:59:04 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 22:50:24 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 23:10:02 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-double sine(double x)
+t_irgb	hsv2rgb(double hue, double sat, double val)
 {
-	double t;
-	double sum;
-	size_t i;
-	size_t n;
-
-	n = 100000;
-	x=x*PI/180;
-	t=x;
-	sum=x;
-	i = 1;
-	while (n > 0)
-	{
-		t=(t * (-1) * x * x ) / ( 2 * i * ( 2 * i + 1 ));
-		sum=sum+t;
-		n--;
-		i++;
-	}
-	return (sum);
-}
-
-double	dabs(double x)
-{
-	return (((x > 0) ? x : -x ));
-}
-
-double	map(double x, double in_max, double out_max)
-{
-  return (x * out_max / in_max);
-}
-
-t_irgb hsv2rgb(double H, double S, double V)
-{
-	t_irgb	RGB;
-	double	P;
-	double	Q;
-	double	T;
+	t_irgb	rgb;
+	double	p;
+	double	q;
+	double	t;
 	double	fract;
 
-	(H == 360.)?(H = 0.):(H /= 60.);
-	fract = (float)(int)dabs(sine(H));
-
-	P = V*(1. - S);
-	Q = V*(1. - S*fract);
-	T = V*(1. - S*(1. - fract));
-
-	if      (0. <= H && H < 1.)
-		RGB = (t_irgb){.r = V, .g = T, .b = P};
-	else if (1. <= H && H < 2.)
-		RGB = (t_irgb){.r = Q, .g = V, .b = P};
-	else if (2. <= H && H < 3.)
-		RGB = (t_irgb){.r = P, .g = V, .b = T};
-	else if (3. <= H && H < 4.)
-		RGB = (t_irgb){.r = P, .g = Q, .b = V};
-	else if (4. <= H && H < 5.)
-		RGB = (t_irgb){.r = T, .g = P, .b = V};
-	else if (5. <= H && H < 6.)
-		RGB = (t_irgb){.r = V, .g = P, .b = Q};
+	(hue == 360.) ? (hue = 0.) : (hue /= 60.);
+	fract = hue - (float)(int)hue;
+	p = val * (1. - sat);
+	q = val * (1. - sat * fract);
+	t = val * (1. - sat * (1. - fract));
+	if (0. <= hue && hue < 1.)
+		rgb = (t_irgb){.r = val, .g = t, .b = p};
+	else if (1. <= hue && hue < 2.)
+		rgb = (t_irgb){.r = q, .g = val, .b = p};
+	else if (2. <= hue && hue < 3.)
+		rgb = (t_irgb){.r = p, .g = val, .b = t};
+	else if (3. <= hue && hue < 4.)
+		rgb = (t_irgb){.r = p, .g = q, .b = val};
+	else if (4. <= hue && hue < 5.)
+		rgb = (t_irgb){.r = t, .g = p, .b = val};
+	else if (5. <= hue && hue < 6.)
+		rgb = (t_irgb){.r = val, .g = p, .b = q};
 	else
-		RGB = (t_irgb){.r = 0., .g = 0., .b = 0.};
-	return RGB;
+		rgb = (t_irgb){.r = 0., .g = 0., .b = 0.};
+	return (rgb);
 }
 
 int		puts_rainbow(double freq)
@@ -82,9 +48,8 @@ int		puts_rainbow(double freq)
 	char	*s;
 	size_t	slen;
 	double	hue;
-	t_irgb	col = (t_irgb){0,255,0};
+	t_irgb	col;
 	size_t	i;
-	double	add;
 
 	r = 0;
 	s = NULL;
@@ -95,18 +60,16 @@ int		puts_rainbow(double freq)
 		i = 0;
 		while (i < slen && s)
 		{
-			col = hsv2rgb(hue,1,1);
+			col = hsv2rgb(hue, 1, 1);
 			printf("\x1b[38;2;%d;%d;%dm%c",
 			(int)(col.r * 255.0),
 			(int)(col.g * 255.0),
 			(int)(col.b * 255.0), s[i++]);
-			add = dabs(sine(hue * freq)*(360)/slen);
-			hue += add;
-			printf("\x1b[0m > freq %f | hue %f | R %f | G %f | B %f | ++ %f | slen %f | sine %f\n",
-			freq, hue,
-			(col.r * 255.0),
-			(col.g * 255.0),
-			(col.b * 255.0), add, (double)slen, sine(hue));
+			hue += (360.0 * freq) / slen;
+			if (hue >= 360)
+			{
+				hue -= 360;
+			}
 		}
 		puts("\x1b[0m");
 		free(s);
