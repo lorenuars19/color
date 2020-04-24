@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 17:59:04 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 23:10:02 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 00:04:03 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		puts_rainbow(double freq)
 
 	r = 0;
 	s = NULL;
-	while ((r = get_next_line(1, &s)))
+	while ((r = get_next_line(0, &s)))
 	{
 		slen = str_len(s);
 		hue = 1;

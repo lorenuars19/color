@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 23:10:23 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 00:01:37 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		puts_color(t_rgb fg, t_rgb bg)
 	{
 		return (err("Color not in range (0-255)"));
 	}
-	while ((r = get_next_line(1, &s)))
+	while ((r = get_next_line(0, &s)))
 	{
 		put_color(fg, FG);
 		put_color(bg, BG);
@@ -72,14 +72,14 @@ int		main(int argc, char *argv[])
 			}
 		}
 	}
-	else if (argc > 1 && !str_cmp(argv[1], "-r"))
+	else if (argc == 2 && !str_cmp(argv[1], "-r"))
 	{
 		if (puts_rainbow(1.0))
 		{
 			return (1);
 		}
 	}
-	else if (argc > 1 && !str_cmp(argv[1], "-rfreq"))
+	else if (argc == 2 && !str_cmp(argv[1], "-rfreq"))
 	{
 		if (puts_rainbow(strtod(argv[2], NULL)))
 		{

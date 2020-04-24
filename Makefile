@@ -6,7 +6,7 @@
 #    By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
-#    Updated: 2020/04/24 23:26:38 by lorenuar         ###   ########.fr        #
+#    Updated: 2020/04/25 00:02:48 by lorenuar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(OBJS) : $(SRCS)
 
 run : $(NAME)
 	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
-	./($NAME)
+	./$(NAME)
 #	cleaning
 clean :
 	@echo "$(RE)--- Removing $(OBJ)$(RC)"
