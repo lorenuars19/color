@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 14:09:55 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 21:22:17 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 00:26:35 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,18 @@ int		err(char *s)
 {
 	printf("\x1b[31;1mError : %s\x1b[0m\n", s);
 	return (1);
+}
+
+void	put_usage(char *s)
+{
+	printf("\nUsage :\n"
+	"\t%s [R(0-255)] [G(0-255] [B(0-255)]       ""                               - Set foreground color only\n"
+	"\t%s -b [R(0-255)] [G(0-255] [B(0-255)]    ""                               - Set background color only\n"
+	"\t%s -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] ""[B(0-255)]   - Set background and foreground color\n"
+	"\t%s -r                                    ""                               - Special rainbow mode\n"
+	"\t%s -rfreq [frequency factor]             ""                               - Rainbow mode with frequency factor\n"
+	"\t%s -rfreq [frequency factor] -rphase [phase offset]"
+	"                     - Rainbow mode with frequency factor and phase offset\n"
+	"\n\n"
+	, s, s, s, s, s, s);
 }

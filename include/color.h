@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:27:15 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 00:11:43 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 00:23:40 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int				str_cmp(const char *s1, const char *s2);
 int				checkinput(char *s);
 void			put_color(t_rgb input, int bg_fg);
 int				err(char *s);
+void			put_usage(char *s);
 
 t_irgb			hsv2rgb(double hue, double sat, double val);
 int				puts_rainbow(double freq, double phase);

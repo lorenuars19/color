@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 00:17:22 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 00:25:59 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,18 @@ int		main(int argc, char *argv[])
 		if (puts_color((t_rgb){argv[1], argv[2], argv[3]},
 		(t_rgb){NULL, NULL, NULL}))
 		{
+			put_usage(argv[0]);
 			return (1);
 		}
 	}
-	else if (argc > 1 && !str_cmp(argv[1], "-b"))
+	else if ((argc == 5 || argc == 8) && !str_cmp(argv[1], "-b"))
 	{
 		if (argc == 5)
 		{
 			if (puts_color((t_rgb){NULL, NULL, NULL},
 			(t_rgb){argv[2], argv[3], argv[4]}))
 			{
+				put_usage(argv[0]);
 				return (1);
 			}
 		}
@@ -68,6 +70,7 @@ int		main(int argc, char *argv[])
 			if (puts_color((t_rgb){argv[5], argv[6], argv[7]},
 			(t_rgb){argv[2], argv[3], argv[4]}))
 			{
+				put_usage(argv[0]);
 				return (1);
 			}
 		}
@@ -76,6 +79,7 @@ int		main(int argc, char *argv[])
 	{
 		if (puts_rainbow(1.0, 0))
 		{
+			put_usage(argv[0]);
 			return (1);
 		}
 	}
@@ -83,6 +87,7 @@ int		main(int argc, char *argv[])
 	{
 		if (puts_rainbow(strtod(argv[2], NULL), 0))
 		{
+			put_usage(argv[0]);
 			return (1);
 		}
 	}
@@ -90,21 +95,13 @@ int		main(int argc, char *argv[])
 	{
 		if (puts_rainbow(strtod(argv[2], NULL),strtod(argv[4], NULL)))
 		{
+			put_usage(argv[0]);
 			return (1);
 		}
 	}
 	else
 	{
-		printf("Usage :\n"
-		"\t%s [R(0-255)] [G(0-255] [B(0-255)]       ""                               - Set foreground color only\n"
-		"\t%s -b [R(0-255)] [G(0-255] [B(0-255)]    ""                               - Set background color only\n"
-		"\t%s -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] ""[B(0-255)]   - Set background and foreground color\n"
-		"\t%s -r                                    ""                               - Special rainbow mode\n"
-		"\t%s -rfreq [frequency factor]             ""                               - Rainbow mode with frequency factor\n"
-		"\t%s -rfreq [frequency factor] -rphase [phase offset]"
-		"                     - Rainbow mode with frequency factor and phase offset\n"
-		"\n\n"
-		, argv[0], argv[0], argv[0], argv[0], argv[0], argv[0]);
+		put_usage(argv[0]);
 	}
 	return (0);
 }
