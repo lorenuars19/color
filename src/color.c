@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 17:59:27 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 20:38:17 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int		main(int argc, char *argv[])
 {
 	if (argc == 4)
 	{
-		if (puts_color((t_rgb){argv[1], argv[2], argv[3]}, (t_rgb){NULL_RGB}))
+		if (puts_color((t_rgb){argv[1], argv[2], argv[3]},
+		(t_rgb){NULL, NULL, NULL}))
 		{
 			return (1);
 		}
@@ -59,7 +60,7 @@ int		main(int argc, char *argv[])
 	{
 		if (argc == 5)
 		{
-			if (puts_color((t_rgb){NULL_RGB},
+			if (puts_color((t_rgb){NULL, NULL, NULL},
 			(t_rgb){argv[2], argv[3], argv[4]}))
 			{
 				return (1);
