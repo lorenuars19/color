@@ -7,4 +7,5 @@ A program to print Colors
 ./color -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] [B(0-255)]   - Set background and foreground color
 ./color -r                                                                   - Special rainbow mode
 ./color -rfreq [frequency factor]                                            - Rainbow mode with frequency factor
+./color -rfreq [frequency factor] -rphase [phase offset]                     - Rainbow mode with frequency factor and phase offset
 ```

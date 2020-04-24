@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 17:59:04 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 00:04:03 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 00:05:56 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_irgb	hsv2rgb(double hue, double sat, double val)
 	return (rgb);
 }
 
-int		puts_rainbow(double freq)
+int		puts_rainbow(double freq, double phase)
 {
 	int		r;
 	char	*s;
@@ -56,7 +56,7 @@ int		puts_rainbow(double freq)
 	while ((r = get_next_line(0, &s)))
 	{
 		slen = str_len(s);
-		hue = 1;
+		hue = phase;
 		i = 0;
 		while (i < slen && s)
 		{
