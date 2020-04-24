@@ -6,7 +6,7 @@
 #    By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
-#    Updated: 2020/04/24 16:52:29 by lorenuar         ###   ########.fr        #
+#    Updated: 2020/04/24 17:49:31 by lorenuar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,19 @@ $(OBJS) : $(SRCS)
 #	runnng
 
 run : $(NAME)
-	@echo "$(CY)>>> Running $(NAME)$(RC)\n"
-	./$(NAME)
+	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
+	-./$(NAME)
+	-./$(NAME) 255 0 0
+	-./$(NAME) 999 99 999
+	-./$(NAME) -b 250 45 35
+	-./$(NAME) -h 0 0 0
+	-./$(NAME) -b 255 0 0 0 255 0
+	-./$(NAME) -r
+	-./$(NAME)
 #	cleaning
 clean :
 	@echo "$(RE)--- Removing $(OBJ)$(RC)"
-	@rm -f $(OBJS) $(OBJDIR)
+	@rm -fd $(OBJS) $(OBJDIR)
 
 fclean : clean
 	@echo "$(RE)--- Removing $(NAME)$(RC)"

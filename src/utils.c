@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 14:09:55 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 15:06:22 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 17:57:38 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,54 @@ int		str_cmp(const char *s1, const char *s2)
 	size_t i;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1 && s2 && s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int		checkinput(char *s)
+{
+	ssize_t n;
+
+	if (s == NULL)
+	{
+		return (256);
+	}
+	n = strtoi(s);
+	if (n >= 0 && n <= 255)
+	{
+		return (n);
+	}
+	return (-1);
+}
+
+void	put_color(t_rgb input, int bg_fg)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = strtoi(input.r);
+	g = strtoi(input.g);
+	b = strtoi(input.b);
+	if (input.r == NULL ||
+		input.g == NULL ||
+		input.b == NULL)
+	{
+		return ;
+	}
+	if (bg_fg == BG)
+	{
+		printf("\x1b[48;2;%d;%d;%dm", r, g, b);
+	}
+	else if (bg_fg == FG)
+	{
+		printf("\x1b[38;2;%d;%d;%dm", r, g, b);
+	}
+}
+
+int		err(char *s)
+{
+	printf("\x1b[31;1mError : %s\x1b[0m\n", s);
+	return (1);
 }

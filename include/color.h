@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:27:15 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 16:49:12 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 17:55:38 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 64
 # endif
+
+# define D printf("%d in %s | n %ld | %s |\n",__LINE__, __FUNCTION__,n ,s);
 
 # define NULL_RGB NULL, NULL, NULL
 
@@ -55,9 +57,11 @@ char			*jointo(char *s1, char *s2, char **tofree);
 int				strtoi(const char *s);
 size_t			str_len(const char *s);
 int 			str_cmp(const char *s1, const char *s2);
+int				checkinput(char *s);
+void			put_color(t_rgb input, int bg_fg);
+int				err(char *s);
 
-int 			checkinput(char *s);
-int 			puts_color(t_rgb fg, t_rgb bg);
-int 			put_color(t_rgb input, int bg_fg);
+int				puts_rainbow();
+int				puts_color(t_rgb fg, t_rgb bg);
 
 #endif
