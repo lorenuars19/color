@@ -6,13 +6,11 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 20:38:17 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 22:37:22 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
-
-
 
 int		puts_color(t_rgb fg, t_rgb bg)
 {
@@ -32,7 +30,6 @@ int		puts_color(t_rgb fg, t_rgb bg)
 	}
 	while ((r = get_next_line(1, &s)))
 	{
-
 		put_color(fg, FG);
 		put_color(bg, BG);
 		printf("%s\x1b[0m\n", s);
@@ -77,7 +74,15 @@ int		main(int argc, char *argv[])
 	}
 	else if (argc > 1 && !str_cmp(argv[1], "-r"))
 	{
-		if (puts_rainbow())
+		if (puts_rainbow(1.0))
+		{
+			return (1);
+		}
+	}
+	else if (argc > 1 && !str_cmp(argv[1], "-rfreq"))
+	{
+		printf("Double %f\n", strtod(argv[2], NULL));
+		if (puts_rainbow(strtod(argv[2], NULL)))
 		{
 			return (1);
 		}
@@ -85,16 +90,17 @@ int		main(int argc, char *argv[])
 	else
 	{
 		printf("Usage :\n"
-		"\t%s [R(0-255)] [G(0-255] [B(0-255)]"
-		"                                      - set foreground color only\n"
-		"\t%s -b [R(0-255)] [G(0-255] [B(0-255)]"
-		"                                   - set background color only\n"
-		"\t%s -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] [B(0-255)]"
-		"   - set background and foreground color\n"
+		"\t%s [R(0-255)] [G(0-255] [B(0-255)]       "
+		"                               - Set foreground color only\n"
+		"\t%s -b [R(0-255)] [G(0-255] [B(0-255)]    "
+		"                               - Set background color only\n"
+		"\t%s -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] "
+		"[B(0-255)]   - Set background and foreground color\n"
 		"\t%s -r                                    "
-		"                               - special rainbow mode\n"
-		, argv[0], argv[0], argv[0], argv[0]);
+		"                               - Special rainbow mode\n"
+		"\t%s -rf [frequency factor]                "
+		"                               - Rainbow mode with frequency factor\n"
+		, argv[0], argv[0], argv[0], argv[0], argv[0]);
 	}
-
 	return (0);
 }

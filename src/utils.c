@@ -6,13 +6,13 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 14:09:55 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 17:57:38 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 21:22:17 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-int		strtoi(const char *s)
+int		str_tol(const char *s)
 {
 	unsigned long long	num;
 	int					sign;
@@ -60,7 +60,7 @@ int		checkinput(char *s)
 	{
 		return (256);
 	}
-	n = strtoi(s);
+	n = str_tol(s);
 	if (n >= 0 && n <= 255)
 	{
 		return (n);
@@ -74,9 +74,9 @@ void	put_color(t_rgb input, int bg_fg)
 	int	g;
 	int	b;
 
-	r = strtoi(input.r);
-	g = strtoi(input.g);
-	b = strtoi(input.b);
+	r = str_tol(input.r);
+	g = str_tol(input.g);
+	b = str_tol(input.b);
 	if (input.r == NULL ||
 		input.g == NULL ||
 		input.b == NULL)

@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:27:15 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 20:38:06 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 21:22:17 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int				get_next_line(int fd, char **line);
 size_t			hasto(char *s, char c);
 char			*jointo(char *s1, char *s2, char **tofree);
 
-int				strtoi(const char *s);
+int				str_tol(const char *s);
 size_t			str_len(const char *s);
 int				str_cmp(const char *s1, const char *s2);
 int				checkinput(char *s);

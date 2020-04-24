@@ -6,7 +6,7 @@
 #    By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
-#    Updated: 2020/04/24 19:43:19 by lorenuar         ###   ########.fr        #
+#    Updated: 2020/04/24 22:40:42 by lorenuar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,15 +61,16 @@ run : $(NAME)
 	# -./$(NAME)
 	# -./$(NAME) 255 0 0
 	# -./$(NAME) 999 99 999
-	# -./$(NAME) -b 250 45 35
+	# -./$(NAME) -b 100 255 255
 	# -./$(NAME) -h 0 0 0
 	# -./$(NAME) -b 255 0 0 0 255 0
 	-./$(NAME) -r
+	-./$(NAME) -rfreq 2.0
 	-./$(NAME)
 #	cleaning
 clean :
 	@echo "$(RE)--- Removing $(OBJ)$(RC)"
-	@rm -fd $(OBJS) $(OBJDIR)
+	@rm -rf $(OBJS) $(OBJDIR)
 
 fclean : clean
 	@echo "$(RE)--- Removing $(NAME)$(RC)"

@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 17:59:04 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/24 20:35:41 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/24 22:50:24 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double sine(double x)
 	size_t i;
 	size_t n;
 
-	n = 1000;
+	n = 100000;
 	x=x*PI/180;
 	t=x;
 	sum=x;
@@ -53,7 +53,7 @@ t_irgb hsv2rgb(double H, double S, double V)
 	double	fract;
 
 	(H == 360.)?(H = 0.):(H /= 60.);
-	fract = H - (int)H;
+	fract = (float)(int)dabs(sine(H));
 
 	P = V*(1. - S);
 	Q = V*(1. - S*fract);
@@ -73,48 +73,40 @@ t_irgb hsv2rgb(double H, double S, double V)
 		RGB = (t_irgb){.r = V, .g = P, .b = Q};
 	else
 		RGB = (t_irgb){.r = 0., .g = 0., .b = 0.};
-
 	return RGB;
 }
 
-int		puts_rainbow()
+int		puts_rainbow(double freq)
 {
+	int		r;
 	char	*s;
 	size_t	slen;
-	double	c;
-	double	sinus;
+	double	hue;
 	t_irgb	col = (t_irgb){0,255,0};
+	size_t	i;
+	double	add;
 
-
+	r = 0;
 	s = NULL;
-	slen = 0;
-	c = 0;
-	sinus = 0;
-	while (c <= 90)
-	{
-		sinus = sine(c);
-		printf("test c %f | sinus %f | map %f\n", c, sinus, map(sinus,1,100));
-		c += 5;
-	}
-
-	printf("\x1b[48;2;%d;%d;%dmO",(int)col.r, (int)col.g, (int)col.b);
-	printf("\x1b[0m\n");
-
-	return (0);
-}
-
-	char	*s;
-	size_t 	slen;
-
-	s = NULL;
-	slen = 0;
 	while ((r = get_next_line(1, &s)))
 	{
 		slen = str_len(s);
-		while (s && s++)
+		hue = 1;
+		i = 0;
+		while (i < slen && s)
 		{
-			put_color(fg, FG);
-			printf("%c", c);
+			col = hsv2rgb(hue,1,1);
+			printf("\x1b[38;2;%d;%d;%dm%c",
+			(int)(col.r * 255.0),
+			(int)(col.g * 255.0),
+			(int)(col.b * 255.0), s[i++]);
+			add = dabs(sine(hue * freq)*(360)/slen);
+			hue += add;
+			printf("\x1b[0m > freq %f | hue %f | R %f | G %f | B %f | ++ %f | slen %f | sine %f\n",
+			freq, hue,
+			(col.r * 255.0),
+			(col.g * 255.0),
+			(col.b * 255.0), add, (double)slen, sine(hue));
 		}
 		puts("\x1b[0m");
 		free(s);
@@ -125,5 +117,4 @@ int		puts_rainbow()
 		return (err("get_next_line allocation"));
 	}
 	return (0);
-	return (0);
-// }
+}
