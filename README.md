@@ -10,3 +10,5 @@ Your terminal emulator must support "truecolor" or "24bit" color mode for optima
 ./color -rfreq [frequency factor]                                            - Rainbow mode with frequency factor
 ./color -rfreq [frequency factor] -rphase [phase offset]                     - Rainbow mode with phase offset
 ```
+# Notes
+You can use `make run` for a quick showcase
