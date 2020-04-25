@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:27:15 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 16:36:47 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 17:48:47 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void			put_usage(char *s);
 
 t_irgb			hsv2rgb(double hue, double sat, double val);
 int				puts_rainbow(double freq, double phase);
-
 
 int				puts_color(t_rgb fg, t_rgb bg);
 

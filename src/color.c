@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 17:19:17 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 17:45:03 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		main(int argc, char *argv[])
 			put_usage(argv[0]);
 			return (err("Invalid input"));
 		}
-		if (puts_rainbow(strtod(argv[2], NULL),strtod(argv[4], NULL)))
+		if (puts_rainbow(strtod(argv[2], NULL), strtod(argv[4], NULL)))
 		{
 			put_usage(argv[0]);
 			return (1);

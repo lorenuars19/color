@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 14:09:55 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 17:17:33 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 17:47:08 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		str_tol(const char *s)
 	return ((sign == 1) ? num : -num);
 }
 
-size_t		str_len(const char *s)
+size_t	str_len(const char *s)
 {
 	size_t	len;
 
@@ -77,6 +77,7 @@ int		checkinput(char *s)
 	}
 	return (err("Number out of range (0-255)"));
 }
+
 int		checkinputdouble(char *s)
 {
 	size_t	i;
@@ -95,7 +96,7 @@ int		checkinputdouble(char *s)
 		}
 		i++;
 	}
-	n = strtod(s,NULL);
+	n = strtod(s, NULL);
 	if (n >= 0 && n <= DBL_MAX)
 	{
 		return (0);
@@ -137,12 +138,18 @@ int		err(char *s)
 void	put_usage(char *s)
 {
 	printf("\nUsage :\n"
-	"\t%s [R(0-255)] [G(0-255] [B(0-255)]       ""                               - Set foreground color only\n"
-	"\t%s -b [R(0-255)] [G(0-255] [B(0-255)]    ""                               - Set background color only\n"
-	"\t%s -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] ""[B(0-255)]   - Set background and foreground color\n"
-	"\t%s -r                                    ""                               - Special rainbow mode\n"
-	"\t%s -rfreq [frequency factor]             ""                               - Rainbow mode with frequency factor\n"
-	"\t%s -rfreq [frequency factor] -rphase [phase offset (360 degrees)]""       - Rainbow mode with frequency factor and phase offset\n"
+	"\t%s [R(0-255)] [G(0-255] [B(0-255)]       "
+	"                               - Set foreground color only\n"
+	"\t%s -b [R(0-255)] [G(0-255] [B(0-255)]    "
+	"                               - Set background color only\n"
+	"\t%s -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] "
+	"[B(0-255)]   - Set background and foreground color\n"
+	"\t%s -r                                    "
+	"                               - Special rainbow mode\n"
+	"\t%s -rfreq [frequency factor]             "
+	"                               - Rainbow mode with frequency factor\n"
+	"\t%s -rfreq [frequency factor] -rphase [phase offset (360 degrees)]"
+	"       - Rainbow mode with frequency factor and phase offset\n"
 	"\n\n"
 	, s, s, s, s, s, s);
 }
