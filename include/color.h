@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:27:15 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 00:23:40 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 16:36:47 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <float.h>
 # include <limits.h>
 
 typedef struct	s_rgb_str
@@ -70,6 +71,7 @@ int				str_tol(const char *s);
 size_t			str_len(const char *s);
 int				str_cmp(const char *s1, const char *s2);
 int				checkinput(char *s);
+int				checkinputdouble(char *s);
 void			put_color(t_rgb input, int bg_fg);
 int				err(char *s);
 void			put_usage(char *s);

@@ -6,7 +6,7 @@
 #    By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
-#    Updated: 2020/04/25 14:01:25 by lorenuar         ###   ########.fr        #
+#    Updated: 2020/04/25 17:18:01 by lorenuar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,14 @@ run : $(NAME)
 	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0.5 -rphase 45
 	@sleep $(SLEEPTIME)
 	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0.5 -rphase 180
+	@sleep $(SLEEPTIME)
+	-python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0e5 -rphase 45
+	@sleep $(SLEEPTIME)
+	-python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0.5 -rphase 1e
+	@sleep $(SLEEPTIME)
+	-python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0e5
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq -0.5
 	@sleep $(SLEEPTIME)
 	-./$(NAME)  0 20880 200
 	@sleep $(SLEEPTIME)

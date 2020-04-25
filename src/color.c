@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 13:57:07 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 17:19:17 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@ int		puts_color(t_rgb fg, t_rgb bg)
 	char	*s;
 
 	s = NULL;
-	if (
-	(checkinput(fg.r) == -1) ||
-	(checkinput(fg.g) == -1) ||
-	(checkinput(fg.b) == -1) ||
-	(checkinput(bg.r) == -1) ||
-	(checkinput(bg.g) == -1) ||
-	(checkinput(bg.b) == -1))
+	if (checkinput(fg.r) || checkinput(fg.g) || checkinput(fg.b) ||
+		checkinput(bg.r) || checkinput(bg.g) || checkinput(bg.b))
 	{
-		return (err("Color not in range (0-255)"));
+		return (err("Invalid input"));
 	}
 	while ((r = get_next_line(0, &s)))
 	{
@@ -85,14 +80,26 @@ int		main(int argc, char *argv[])
 	}
 	else if (argc == 3 && !str_cmp(argv[1], "-rfreq"))
 	{
+		if (checkinputdouble(argv[2]))
+		{
+			put_usage(argv[0]);
+			return (err("Invalid input"));
+		}
 		if (puts_rainbow(strtod(argv[2], NULL), 0))
 		{
 			put_usage(argv[0]);
 			return (1);
 		}
 	}
-	else if (argc == 5 && !str_cmp(argv[1], "-rfreq") && !str_cmp(argv[3], "-rphase"))
+	else if (argc == 5 && !str_cmp(argv[1], "-rfreq") &&
+	!str_cmp(argv[3], "-rphase"))
 	{
+		if (checkinputdouble(argv[2]) ||
+			checkinputdouble(argv[4]))
+		{
+			put_usage(argv[0]);
+			return (err("Invalid input"));
+		}
 		if (puts_rainbow(strtod(argv[2], NULL),strtod(argv[4], NULL)))
 		{
 			put_usage(argv[0]);
