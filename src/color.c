@@ -6,7 +6,7 @@
 /*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 13:40:16 by lorenuar          #+#    #+#             */
-/*   Updated: 2020/04/25 00:25:59 by lorenuar         ###   ########.fr       */
+/*   Updated: 2020/04/25 13:57:07 by lorenuar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		main(int argc, char *argv[])
 	else
 	{
 		put_usage(argv[0]);
+		return (1);
 	}
 	return (0);
 }

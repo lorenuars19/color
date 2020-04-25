@@ -1,5 +1,6 @@
 # color
-A program to print Colors
+A program to colorize text using ANSI escape codes.<br>
+Your terminal emulator must support "truecolor" or "24bit" color mode for optimal display.
 # Usage
 ```
 ./color [R(0-255)] [G(0-255] [B(0-255)]                                      - Set foreground color only
@@ -7,5 +8,5 @@ A program to print Colors
 ./color -b [R(0-255)] [G(0-255] [B(0-255)] [R(0-255)] [G(0-255] [B(0-255)]   - Set background and foreground color
 ./color -r                                                                   - Special rainbow mode
 ./color -rfreq [frequency factor]                                            - Rainbow mode with frequency factor
-./color -rfreq [frequency factor] -rphase [phase offset]                     - Rainbow mode with frequency factor and phase offset
+./color -rfreq [frequency factor] -rphase [phase offset]                     - Rainbow mode with phase offset
 ```

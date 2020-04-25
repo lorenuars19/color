@@ -6,7 +6,7 @@
 #    By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/10 13:37:24 by lorenuar          #+#    #+#              #
-#    Updated: 2020/04/25 00:02:48 by lorenuar         ###   ########.fr        #
+#    Updated: 2020/04/25 14:01:25 by lorenuar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ YE	= \033[33;1m #	Yellow
 CY	= \033[36;1m #	Cyan
 RC	= \033[0m #	Reset Colors
 
+BANNERTXT	= "R A I N B O W - R A I N B O W - R A I N B O W - R A I N B O W - R A I N B O W - R A I N B O W - R A I N B O W"
+SLEEPTIME	= 0.2
+
 # ================================== RULES =================================== #
 
 all : $(NAME)
@@ -58,7 +61,29 @@ $(OBJS) : $(SRCS)
 
 run : $(NAME)
 	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
-	./$(NAME)
+	-./$(NAME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME)  0 200 200
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -b 50 50 50
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -b 50 50 50 0 200 200
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -r
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 2.0
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0.5
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0.5 -rphase 45
+	@sleep $(SLEEPTIME)
+	python3 banner.py $(BANNERTXT) | ./$(NAME) -rfreq 0.5 -rphase 180
+	@sleep $(SLEEPTIME)
+	-./$(NAME)  0 20880 200
+	@sleep $(SLEEPTIME)
+	-./$(NAME) -b 50 50 50 7 4
+	@sleep $(SLEEPTIME)
+	-./$(NAME) -b 50 50 50 0 200 200 5566 37
+
 #	cleaning
 clean :
 	@echo "$(RE)--- Removing $(OBJ)$(RC)"
